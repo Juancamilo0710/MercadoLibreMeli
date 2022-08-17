@@ -6,5 +6,6 @@
     <string name="error_network_reintent">Reintentar</string>
     <string name="categoria">Categorias</string>
     <string name="paises">Paises</string>
+    <string name="product">Lista de productos</string>
     <string name="acercaDe">Acerca de MercadoLibre</string>
 </resources>

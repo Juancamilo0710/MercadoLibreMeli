@@ -2,6 +2,7 @@ package com.example.mercadolibremeli.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.content.Intent;
@@ -15,17 +16,23 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.mercadolibremeli.R;
+import com.example.mercadolibremeli.adapter.ProductAdapter;
 import com.example.mercadolibremeli.interfaces.InterfacePresenter;
 import com.example.mercadolibremeli.interfaces.InterfaceView;
+import com.example.mercadolibremeli.model.entities.Product;
 import com.example.mercadolibremeli.presenter.Productpresenter;
 import com.example.mercadolibremeli.view.category.Categorias;
 import com.example.mercadolibremeli.view.paises.Paises;
+import com.example.mercadolibremeli.view.product.ProductList;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements InterfaceView, SearchView.OnQueryTextListener {
 
     private InterfacePresenter presenter = new Productpresenter(this, MainActivity.this);
     private androidx.appcompat.widget.SearchView searchView;
     private ImageView menu;
+    private RecyclerView recyclerViewSearchResults;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,5 +99,16 @@ public class MainActivity extends AppCompatActivity implements InterfaceView, Se
     @Override
     public void getData(String q) {
         presenter.getData(q);
+    }
+
+    @Override
+    public void showProduct(ArrayList<Product> productos) {
+        if(!productos.isEmpty()){
+            Intent showProductIntent = new Intent();
+            showProductIntent.setClass(MainActivity.this, ProductList.class);
+            showProductIntent.putExtra("Productos",productos);
+            startActivity(showProductIntent);
+        }
+
     }
 }

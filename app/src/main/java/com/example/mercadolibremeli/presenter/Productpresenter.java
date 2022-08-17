@@ -27,6 +27,6 @@ public class Productpresenter implements InterfacePresenter {
 
     @Override
     public void showProduct(ArrayList<Product> productos) {
-
+        view.showProduct(productos);
     }
 }
