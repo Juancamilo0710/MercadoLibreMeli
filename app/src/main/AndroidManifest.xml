@@ -24,6 +24,7 @@
         <activity android:name=".view.paises.Paises" />
         <activity android:name=".view.category.Categorias" />
         <activity android:name=".view.product.ProductList" />
+        <activity android:name=".view.product.ProductDetail" />
     </application>
 
 </manifest>

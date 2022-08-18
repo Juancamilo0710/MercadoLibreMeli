@@ -15,6 +15,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.mercadolibremeli.R;
 import com.example.mercadolibremeli.model.entities.Product;
+import com.example.mercadolibremeli.view.product.ProductDetail;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -43,14 +44,15 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         holder.txtcantidad.setText(String.valueOf(p.getAvailable_quantity()));
         Glide.with(context).load(p.getThumbnail().replaceFirst("http","https"))
                 .centerCrop()
+                .thumbnail(0.5f)
                 .diskCacheStrategy(DiskCacheStrategy.ALL).into(holder.img);
         holder.itemView.setOnClickListener(view -> {
-            /*Intent a = new Intent(this.context, ProductDetail.class);
+            Intent a = new Intent(this.context, ProductDetail.class);
             a.putExtra("img",p.getThumbnail());
             a.putExtra("titulo", p.getTitle());
             a.putExtra("precio", p.getPrice());
             a.putExtra("Atributos",p.getAttributes());
-            context.startActivity(a);*/
+            context.startActivity(a);
         });
 
     }

@@ -7,5 +7,8 @@
     <string name="categoria">Categorias</string>
     <string name="paises">Paises</string>
     <string name="product">Lista de productos</string>
+    <string name="details">Detalle de productos</string>
+    <string name="category">Lista de categorias</string>
+    <string name="pais">Lista de paises</string>
     <string name="acercaDe">Acerca de MercadoLibre</string>
 </resources>
