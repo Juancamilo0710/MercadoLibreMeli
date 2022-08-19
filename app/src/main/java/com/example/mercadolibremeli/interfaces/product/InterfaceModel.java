@@ -1,4 +1,4 @@
-package com.example.mercadolibremeli.interfaces;
+package com.example.mercadolibremeli.interfaces.product;
 
 public interface InterfaceModel {
 

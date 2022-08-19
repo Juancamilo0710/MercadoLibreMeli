@@ -16,9 +16,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.mercadolibremeli.R;
-import com.example.mercadolibremeli.adapter.ProductAdapter;
-import com.example.mercadolibremeli.interfaces.InterfacePresenter;
-import com.example.mercadolibremeli.interfaces.InterfaceView;
+import com.example.mercadolibremeli.interfaces.product.InterfacePresenter;
+import com.example.mercadolibremeli.interfaces.product.InterfaceView;
 import com.example.mercadolibremeli.model.entities.Product;
 import com.example.mercadolibremeli.presenter.Productpresenter;
 import com.example.mercadolibremeli.view.category.Categorias;

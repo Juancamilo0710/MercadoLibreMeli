@@ -4,8 +4,8 @@ import android.content.Context;
 import android.widget.Toast;
 
 import com.example.mercadolibremeli.adapter.ApiAdapter;
-import com.example.mercadolibremeli.interfaces.InterfaceModel;
-import com.example.mercadolibremeli.interfaces.InterfacePresenter;
+import com.example.mercadolibremeli.interfaces.product.InterfaceModel;
+import com.example.mercadolibremeli.interfaces.product.InterfacePresenter;
 import com.example.mercadolibremeli.model.entities.ListProduct;
 import com.example.mercadolibremeli.model.entities.Product;
 import com.example.mercadolibremeli.rest.UtilsNetwork;
