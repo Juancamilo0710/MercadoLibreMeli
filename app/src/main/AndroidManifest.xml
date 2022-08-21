@@ -22,9 +22,10 @@
         </activity>
         <activity android:name=".view.MainActivity"/>
         <activity android:name=".view.paises.Paises" />
-        <activity android:name=".view.category.Categorias" />
+        <activity android:name=".view.categorias.Categorias" />
         <activity android:name=".view.product.ProductList" />
         <activity android:name=".view.product.ProductDetail" />
+        <activity android:name=".view.product.ProductCategoias.ProductsCategorias"/>
     </application>
 
 </manifest>

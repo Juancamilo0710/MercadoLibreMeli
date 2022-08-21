@@ -1,30 +1,35 @@
-package com.example.mercadolibremeli.presenter.Category;
+package com.example.mercadolibremeli.presenter.categorias;
 
 
 import android.content.Context;
 
-import com.example.mercadolibremeli.interfaces.category.InterfaceModel;
-import com.example.mercadolibremeli.interfaces.category.InterfacePresenter;
-import com.example.mercadolibremeli.interfaces.category.InterfaceView;
-import com.example.mercadolibremeli.model.Interactor.Category.CategoryInteractor;
-import com.example.mercadolibremeli.model.entities.Category;
+import com.example.mercadolibremeli.interfaces.categorias.InterfaceModel;
+import com.example.mercadolibremeli.interfaces.categorias.InterfacePresenter;
+import com.example.mercadolibremeli.interfaces.categorias.InterfaceView;
+import com.example.mercadolibremeli.model.Interactor.Categorias.CategoriasInteractor;
+import com.example.mercadolibremeli.model.entities.Categorias;
 
 import java.util.List;
 
-public class CategoryPresenter implements InterfacePresenter {
+public class CategoriasPresenter implements InterfacePresenter {
 
 
     private InterfaceModel interfaceModel;
     private InterfaceView view;
 
-    public CategoryPresenter(InterfaceView view, Context context) {
-        this.interfaceModel = new CategoryInteractor(this, context);
+    public CategoriasPresenter(InterfaceView view, Context context) {
+        this.interfaceModel = new CategoriasInteractor(this, context);
         this.view = view;
     }
 
     @Override
-    public void getCategorias() {
-        interfaceModel.getCategorias();
+    public void getCategorias(String id_pais) {
+        interfaceModel.getCategorias(id_pais);
         view.showProgresBar();
+    }
+
+    @Override
+    public void showCategorias(List<Categorias> categorias) {
+        view.showCategorias(categorias);
     }
 }

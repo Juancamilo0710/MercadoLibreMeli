@@ -1,32 +1,36 @@
-package com.nr.mercadolibre.Presenter.Country;
+package com.example.mercadolibremeli.presenter.paises;
 
-import com.nr.mercadolibre.Interface.Country.CountryInterface;
-import com.nr.mercadolibre.Model.Interactor.Country.CountryInteractor;
-import com.nr.mercadolibre.Model.Entities.Country;
+import android.content.Context;
+
+import com.example.mercadolibremeli.interfaces.paises.InterfaceModel;
+import com.example.mercadolibremeli.interfaces.paises.InterfacePresenter;
+import com.example.mercadolibremeli.interfaces.paises.InterfaceView;
+import com.example.mercadolibremeli.model.Interactor.paises.PaisesInteractor;
+import com.example.mercadolibremeli.model.entities.Paises;
 
 import java.util.List;
 
-public class CountryPresenter implements CountryInterface.InterfacePresenter {
+public class PaisesPresenter implements InterfacePresenter {
 
-    private CountryInterface.InterfaceModel countryInterator;
-    private CountryInterface.InterfaceView view;
+    private InterfaceModel interfaceModel;
+    private InterfaceView view;
 
-    public CountryPresenter(CountryInterface.InterfaceView view) {
-        this.countryInterator = new CountryInteractor(this);
+    public PaisesPresenter(InterfaceView view, Context context) {
+        this.interfaceModel = new PaisesInteractor(this, context);
         this.view = view;
     }
 
     @Override
-    public void onSuccessResult(List<Country> countries) {
+    public void showPaises(List<Paises> paises) {
+        view.showPaises(paises);
         view.hideProgresBar();
-        view.showApodDetails(countries);
 
     }
 
     @Override
-    public void requestData() {
+    public void getPaises() {
+        interfaceModel.getPaises();
         view.showProgresBar();
-        countryInterator.querySearch();
 
     }
 

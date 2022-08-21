@@ -1,4 +1,4 @@
-package com.example.mercadolibremeli.interfaces.category;
+package com.example.mercadolibremeli.interfaces.categorias;
 
 import com.example.mercadolibremeli.model.entities.Categorias;
 
@@ -8,7 +8,7 @@ public interface InterfaceView {
 
     void getCategorias(String id_pais);
 
-    void showApodDetails(List<Categorias> categories);
+    void showCategorias(List<Categorias> categories);
 
     void showProgresBar();
 

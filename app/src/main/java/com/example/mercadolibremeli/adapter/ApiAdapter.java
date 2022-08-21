@@ -15,7 +15,7 @@ public class ApiAdapter {
 
     private static JsonApi jsonApi;
 
-    public static JsonApi getDataUser() {
+    public static JsonApi getDataApi() {
         if (jsonApi == null) {
             Retrofit retrofit = new Retrofit.Builder()
                     .baseUrl(Endpoints.URL_BASE)

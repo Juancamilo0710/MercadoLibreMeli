@@ -2,7 +2,7 @@ package com.example.mercadolibremeli.model.entities;
 
 import java.io.Serializable;
 
-public class Category implements Serializable {
+public class Categorias implements Serializable {
     private String id;
 
     private String name;

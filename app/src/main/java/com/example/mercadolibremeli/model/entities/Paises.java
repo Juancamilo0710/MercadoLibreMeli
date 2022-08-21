@@ -1,8 +1,8 @@
-package com.nr.mercadolibre.Model.Entities;
+package com.example.mercadolibremeli.model.entities;
 
 import java.io.Serializable;
 
-public class Country  implements Serializable {
+public class Paises implements Serializable {
     private String id;
 
     private String name;

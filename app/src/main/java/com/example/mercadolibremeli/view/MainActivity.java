@@ -19,8 +19,8 @@ import com.example.mercadolibremeli.R;
 import com.example.mercadolibremeli.interfaces.product.InterfacePresenter;
 import com.example.mercadolibremeli.interfaces.product.InterfaceView;
 import com.example.mercadolibremeli.model.entities.Product;
-import com.example.mercadolibremeli.presenter.Productpresenter;
-import com.example.mercadolibremeli.view.category.Categorias;
+import com.example.mercadolibremeli.presenter.products.Productpresenter;
+import com.example.mercadolibremeli.view.categorias.Categorias;
 import com.example.mercadolibremeli.view.paises.Paises;
 import com.example.mercadolibremeli.view.product.ProductList;
 

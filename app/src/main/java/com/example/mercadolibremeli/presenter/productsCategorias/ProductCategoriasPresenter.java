@@ -1,36 +1,37 @@
-package com.nr.mercadolibre.Presenter.ProductCategory;
+package com.example.mercadolibremeli.presenter.productsCategorias;
 
 import android.content.Context;
 
-import com.nr.mercadolibre.Interface.ProductCategory.ProductCategoryInterface;
-import com.nr.mercadolibre.Model.Entities.Product;
-import com.nr.mercadolibre.Model.Interactor.ProductCategory.ProductCategoryInteractor;
+import com.example.mercadolibremeli.interfaces.productCategorias.InterfaceModel;
+import com.example.mercadolibremeli.interfaces.productCategorias.InterfacePresenter;
+import com.example.mercadolibremeli.interfaces.productCategorias.InterfaceView;
+import com.example.mercadolibremeli.model.Interactor.ProductCategorias.ProductCategoriasInteractor;
+import com.example.mercadolibremeli.model.entities.Product;
 
 import java.util.ArrayList;
 
-public class ProductCategoryPresenter implements ProductCategoryInterface.InterfacePresenter {
+public class ProductCategoriasPresenter implements InterfacePresenter {
 
 
-    private ProductCategoryInterface.InterfaceModel productInterator;
-    private ProductCategoryInterface.InterfaceView view;
+    private InterfaceModel productInterator;
+    private InterfaceView view;
 
 
-    public ProductCategoryPresenter(ProductCategoryInterface.InterfaceView view, Context context) {
-        this.productInterator = new ProductCategoryInteractor(this);
+    public ProductCategoriasPresenter(InterfaceView view, Context context) {
+        this.productInterator = new ProductCategoriasInteractor(this);
         this.view = view;
     }
 
     @Override
-    public void onSuccessResult(ArrayList<Product> productos) {
-        view.hideProgresBar();
-        view.showApodDetails(productos);
-
+    public void getProductCategorias(String id_pais, String id_categoria) {
+        productInterator.getProductCategorias( id_pais, id_categoria);
+        view.showProgresBar();
     }
 
     @Override
-    public void requestData(String id_pais,String id_categoria) {
-        view.showProgresBar();
-        productInterator.querySearch( id_pais, id_categoria);
+    public void showProductCategorias(ArrayList<Product> productos) {
+        view.hideProgresBar();
+        view.showProductCategorias(productos);
     }
 
 

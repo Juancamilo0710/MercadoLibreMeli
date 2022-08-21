@@ -1,8 +1,4 @@
-package com.nr.mercadolibre.View.ProductCategory;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+package com.example.mercadolibremeli.view.product.ProductCategoias;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -12,18 +8,23 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.nr.mercadolibre.Interface.ProductCategory.ProductCategoryInterface;
-import com.nr.mercadolibre.Model.Entities.Product;
-import com.nr.mercadolibre.Presenter.ProductCategory.ProductCategoryPresenter;
-import com.nr.mercadolibre.R;
-import com.nr.mercadolibre.View.Adapter.AdapterProducto;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.mercadolibremeli.R;
+import com.example.mercadolibremeli.adapter.AdapterProducto;
+import com.example.mercadolibremeli.interfaces.productCategorias.InterfacePresenter;
+import com.example.mercadolibremeli.interfaces.productCategorias.InterfaceView;
+import com.example.mercadolibremeli.model.entities.Product;
+import com.example.mercadolibremeli.presenter.productsCategorias.ProductCategoriasPresenter;
 
 import java.util.ArrayList;
 
-public class ProductsCategory extends AppCompatActivity implements ProductCategoryInterface.InterfaceView {
+public class ProductsCategorias extends AppCompatActivity implements InterfaceView {
     private String id_pais;
     private String id_categoria;
-    private ProductCategoryPresenter mPresenter;
+    private InterfacePresenter mPresenter;
     private LinearLayout errorbusqueda;
     private ProgressBar progressbarLoading;
     private TextView reintento;
@@ -36,7 +37,7 @@ public class ProductsCategory extends AppCompatActivity implements ProductCatego
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_products_category);
-        mPresenter = new ProductCategoryPresenter(this,getApplicationContext());
+        mPresenter = new ProductCategoriasPresenter(this,getApplicationContext());
         recyclerView = findViewById(R.id.recycler1);
         errorbusqueda=findViewById(R.id.errorbusqueda);
         reintento=findViewById(R.id.reintento);
@@ -46,14 +47,14 @@ public class ProductsCategory extends AppCompatActivity implements ProductCatego
         progressbarLoading=findViewById(R.id.progressbar_loading);
         id_pais=getIntent().getExtras().getString("pais");
         id_categoria=getIntent().getExtras().getString("categoria");
-        requestData(id_pais,id_categoria);
+        getProductCategorias(id_pais,id_categoria);
     }
 
 
     @Override
-    public void requestData(String id_pais,String id_categoria) {
+    public void getProductCategorias(String id_pais, String id_categoria) {
         Log.i("ProductsCategory", "Productos por categoria "+"id_pais: "+id_pais+"  id_categoria  "+id_categoria);
-        mPresenter.requestData(id_pais,id_categoria);
+        mPresenter.getProductCategorias(id_pais,id_categoria);
 
     }
 
@@ -70,13 +71,12 @@ public class ProductsCategory extends AppCompatActivity implements ProductCatego
     }
 
     @Override
-    public void showApodDetails(ArrayList<Product> productos) {
+    public void showProductCategorias(ArrayList<Product> productos) {
         Log.i("ProductsCategory", "Productos por categoria "+"id_pais: "+id_pais+"  id_categoria  "+id_categoria);
         adapterProducto = new AdapterProducto(productos,this);
         recyclerView.setAdapter(adapterProducto);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setVisibility(View.VISIBLE);
-
     }
 
 }

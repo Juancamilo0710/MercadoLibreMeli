@@ -26,16 +26,17 @@ public class ProductInteractor implements InterfaceModel, Callback<ListProduct> 
         this.context = context;
     }
 
+
     @Override
-    public void getUsersFromApi(String q) {
-        Call<ListProduct> call = ApiAdapter.getDataUser().getListProduct(q);
+    public void getproductFromApi(String q) {
+        Call<ListProduct> call = ApiAdapter.getDataApi().getListProduct(q);
         call.enqueue(this);
     }
 
     @Override
     public void getData(String q) {
         if (UtilsNetwork.isOnline(context)) {
-            getUsersFromApi(q);
+            getproductFromApi(q);
         }
 
     }

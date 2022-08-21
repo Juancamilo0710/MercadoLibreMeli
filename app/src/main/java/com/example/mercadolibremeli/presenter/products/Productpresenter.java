@@ -1,4 +1,4 @@
-package com.example.mercadolibremeli.presenter;
+package com.example.mercadolibremeli.presenter.products;
 
 import android.content.Context;
 
