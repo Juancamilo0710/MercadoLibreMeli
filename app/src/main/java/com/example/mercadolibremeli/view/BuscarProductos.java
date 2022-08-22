@@ -1,9 +1,5 @@
 package com.example.mercadolibremeli.view;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.SearchView;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -18,6 +14,9 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
+
 import com.example.mercadolibremeli.R;
 import com.example.mercadolibremeli.interfaces.productos.InterfacePresenter;
 import com.example.mercadolibremeli.interfaces.productos.InterfaceView;
@@ -31,20 +30,20 @@ import java.util.ArrayList;
 
 public class BuscarProductos extends AppCompatActivity implements InterfaceView, SearchView.OnQueryTextListener {
 
-    private InterfacePresenter presenter = new Productospresenter(this, BuscarProductos.this);
-    private androidx.appcompat.widget.SearchView searchView;
     private ImageView menu;
+    private ImageView imagen;
     private ProgressBar progressBarr;
     private LinearLayout notnetwork;
-    private ImageView imagen;
     private LinearLayout failProductos;
-    private TextView reintento;
+    private androidx.appcompat.widget.SearchView searchView;
+    private InterfacePresenter presenter = new Productospresenter(this, BuscarProductos.this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initV();
+        searchView.setOnQueryTextListener(this);
         menu.setOnClickListener(v -> OptionsMenu());
     }
 
@@ -56,52 +55,14 @@ public class BuscarProductos extends AppCompatActivity implements InterfaceView,
         disguiseUtilsNetwork();
     }
 
-    private void OptionsMenu() {
-        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-        imm.hideSoftInputFromWindow( searchView.getWindowToken(), 0);
-        RelativeLayout contenedor = (RelativeLayout) findViewById(R.id.principal);
-        final LayoutInflater inflater = LayoutInflater.from(getApplicationContext());
-        inflater.inflate(R.layout.nav_menu,contenedor,true);
-
-        TextView categorias = findViewById(R.id.categorias);
-        categorias.setOnClickListener(v -> {
-            Log.i("ProductSearch", "Menu categorias");
-            removeOptionsMenu();
-            Intent i = new Intent(BuscarProductos.this, Categorias.class);
-            i.putExtra("flag", false);
-            startActivity(i);
-
-        });
-        TextView paises = findViewById(R.id.paises);
-        paises.setOnClickListener(v -> {
-            Log.i("ProductSearch", "Menu paises");
-            removeOptionsMenu();
-            Intent i = new Intent(BuscarProductos.this, Paises.class);
-            startActivity(i);
-
-        });
-
-        RelativeLayout m = findViewById(R.id.menuOptions);
-        m.setOnClickListener(v -> removeOptionsMenu());
-    }
-
-    private void removeOptionsMenu(){
-        ViewGroup menu = findViewById(R.id.principal);
-        RelativeLayout options = findViewById(R.id.menuOptions);
-        menu.removeView(options);
-    }
-
     @Override
     public void initV() {
-
-        failProductos = findViewById(R.id.failProductos);
-        imagen = findViewById(R.id.imagen);
-        reintento = findViewById(R.id.reintento);
-        notnetwork = findViewById(R.id.notnetwork);
-        progressBarr = findViewById(R.id.progressbar_loading);
         menu = findViewById(R.id.menu);
+        imagen = findViewById(R.id.imagen);
+        notnetwork = findViewById(R.id.notnetwork);
         searchView = findViewById(R.id.searchview);
-        searchView.setOnQueryTextListener(this);
+        progressBarr = findViewById(R.id.progressbar_loading);
+        failProductos = findViewById(R.id.failProductos);
     }
 
     @Override
@@ -128,10 +89,10 @@ public class BuscarProductos extends AppCompatActivity implements InterfaceView,
     @Override
     public void showProduct(ArrayList<Productos> productos) {
         progressBarr.setVisibility(View.GONE);
-        if(!productos.isEmpty()){
+        if (!productos.isEmpty()) {
             Intent showProductIntent = new Intent();
             showProductIntent.setClass(BuscarProductos.this, ProductosList.class);
-            showProductIntent.putExtra("Productos",productos);
+            showProductIntent.putExtra("Productos", productos);
             startActivity(showProductIntent);
         }
 
@@ -180,5 +141,40 @@ public class BuscarProductos extends AppCompatActivity implements InterfaceView,
     @Override
     public void disguiseFailProductos() {
         failProductos.setVisibility(View.GONE);
+    }
+
+    private void OptionsMenu() {
+        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(searchView.getWindowToken(), 0);
+        RelativeLayout contenedor = findViewById(R.id.principal);
+        final LayoutInflater inflater = LayoutInflater.from(getApplicationContext());
+        inflater.inflate(R.layout.nav_menu, contenedor, true);
+
+        TextView categorias = findViewById(R.id.categorias);
+        categorias.setOnClickListener(v -> {
+            Log.i("ProductSearch", "Menu categorias");
+            removeOptionsMenu();
+            Intent i = new Intent(BuscarProductos.this, Categorias.class);
+            i.putExtra("flag", false);
+            startActivity(i);
+
+        });
+        TextView paises = findViewById(R.id.paises);
+        paises.setOnClickListener(v -> {
+            Log.i("ProductSearch", "Menu paises");
+            removeOptionsMenu();
+            Intent i = new Intent(BuscarProductos.this, Paises.class);
+            startActivity(i);
+
+        });
+
+        RelativeLayout m = findViewById(R.id.menuOptions);
+        m.setOnClickListener(v -> removeOptionsMenu());
+    }
+
+    private void removeOptionsMenu() {
+        ViewGroup menu = findViewById(R.id.principal);
+        RelativeLayout options = findViewById(R.id.menuOptions);
+        menu.removeView(options);
     }
 }

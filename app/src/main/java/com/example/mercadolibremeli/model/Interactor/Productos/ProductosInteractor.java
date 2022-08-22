@@ -18,8 +18,8 @@ import retrofit2.Response;
 
 public class ProductosInteractor implements InterfaceModel, Callback<ListProductos> {
 
-    private final InterfacePresenter presenter;
     private final Context context;
+    private final InterfacePresenter presenter;
 
     public ProductosInteractor(InterfacePresenter presenter, Context context) {
         this.presenter = presenter;
