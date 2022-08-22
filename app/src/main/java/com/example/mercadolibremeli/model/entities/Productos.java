@@ -3,12 +3,12 @@ package com.example.mercadolibremeli.model.entities;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Product implements Serializable {
+public class Productos implements Serializable {
     private int available_quantity;
     private float price;
     private String title;
     private String thumbnail;
-    private ArrayList<AtributosProduct> attributes;
+    private ArrayList<AtributosProductos> attributes;
 
     public String getTitle() {
         return title;
@@ -34,11 +34,11 @@ public class Product implements Serializable {
         this.available_quantity = available_quantity;
     }
 
-    public ArrayList<AtributosProduct> getAttributes() {
+    public ArrayList<AtributosProductos> getAttributes() {
         return attributes;
     }
 
-    public void setAttributes(ArrayList<AtributosProduct> attributes) {
+    public void setAttributes(ArrayList<AtributosProductos> attributes) {
         this.attributes = attributes;
     }
 

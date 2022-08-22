@@ -1,4 +1,4 @@
-package com.example.mercadolibremeli.interfaces.productCategorias;
+package com.example.mercadolibremeli.interfaces.productosCategorias;
 
 public interface InterfaceModel {
 

@@ -1,4 +1,4 @@
-package com.example.mercadolibremeli.view.product.ProductCategoias;
+package com.example.mercadolibremeli.view.ProductosCategoias;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -13,15 +13,15 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mercadolibremeli.R;
-import com.example.mercadolibremeli.adapter.AdapterProducto;
-import com.example.mercadolibremeli.interfaces.productCategorias.InterfacePresenter;
-import com.example.mercadolibremeli.interfaces.productCategorias.InterfaceView;
-import com.example.mercadolibremeli.model.entities.Product;
-import com.example.mercadolibremeli.presenter.productsCategorias.ProductCategoriasPresenter;
+import com.example.mercadolibremeli.adapter.AdapterProductos;
+import com.example.mercadolibremeli.interfaces.productosCategorias.InterfacePresenter;
+import com.example.mercadolibremeli.interfaces.productosCategorias.InterfaceView;
+import com.example.mercadolibremeli.model.entities.Productos;
+import com.example.mercadolibremeli.presenter.productosCategorias.ProductosCategoriasPresenter;
 
 import java.util.ArrayList;
 
-public class ProductsCategorias extends AppCompatActivity implements InterfaceView {
+public class ProductosCategorias extends AppCompatActivity implements InterfaceView {
     private String id_pais;
     private String id_categoria;
     private InterfacePresenter mPresenter;
@@ -32,12 +32,12 @@ public class ProductsCategorias extends AppCompatActivity implements InterfaceVi
     private LinearLayout noResult;
     private ImageView menu;
     private RecyclerView recyclerView;
-    private AdapterProducto adapterProducto;
+    private AdapterProductos adapterProductos;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_products_category);
-        mPresenter = new ProductCategoriasPresenter(this,getApplicationContext());
+        mPresenter = new ProductosCategoriasPresenter(this,getApplicationContext());
         recyclerView = findViewById(R.id.recycler1);
         errorbusqueda=findViewById(R.id.errorbusqueda);
         reintento=findViewById(R.id.reintento);
@@ -71,10 +71,10 @@ public class ProductsCategorias extends AppCompatActivity implements InterfaceVi
     }
 
     @Override
-    public void showProductCategorias(ArrayList<Product> productos) {
+    public void showProductCategorias(ArrayList<Productos> productos) {
         Log.i("ProductsCategory", "Productos por categoria "+"id_pais: "+id_pais+"  id_categoria  "+id_categoria);
-        adapterProducto = new AdapterProducto(productos,this);
-        recyclerView.setAdapter(adapterProducto);
+        adapterProductos = new AdapterProductos(productos,this);
+        recyclerView.setAdapter(adapterProductos);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setVisibility(View.VISIBLE);
     }

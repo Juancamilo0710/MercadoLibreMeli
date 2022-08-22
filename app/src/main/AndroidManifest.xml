@@ -20,12 +20,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.MainActivity"/>
+        <activity android:name=".view.BuscarProductos"/>
         <activity android:name=".view.paises.Paises" />
         <activity android:name=".view.categorias.Categorias" />
-        <activity android:name=".view.product.ProductList" />
-        <activity android:name=".view.product.ProductDetail" />
-        <activity android:name=".view.product.ProductCategoias.ProductsCategorias"/>
+        <activity android:name=".view.productos.ProductosList" />
+        <activity android:name=".view.productos.ProductosDetail" />
+        <activity android:name=".view.ProductosCategoias.ProductosCategorias"/>
     </application>
 
 </manifest>

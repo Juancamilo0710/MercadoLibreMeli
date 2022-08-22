@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/gris_claro"
     android:id="@+id/principal"
-    tools:context=".view.MainActivity">
+    tools:context=".view.BuscarProductos">
 
     <LinearLayout
         android:id="@+id/relative1"

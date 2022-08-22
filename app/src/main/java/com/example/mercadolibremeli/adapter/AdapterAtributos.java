@@ -11,16 +11,16 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mercadolibremeli.R;
-import com.example.mercadolibremeli.model.entities.AtributosProduct;
+import com.example.mercadolibremeli.model.entities.AtributosProductos;
 
 import java.util.ArrayList;
 
 public class AdapterAtributos extends RecyclerView.Adapter<AdapterAtributos.viewHolderAtributos> {
 
-    private ArrayList<AtributosProduct> atributos;
+    private ArrayList<AtributosProductos> atributos;
     private Context context;
 
-    public AdapterAtributos(ArrayList<AtributosProduct> atributos, Context context) {
+    public AdapterAtributos(ArrayList<AtributosProductos> atributos, Context context) {
         this.atributos = atributos;
         this.context = context;
     }
@@ -34,7 +34,7 @@ public class AdapterAtributos extends RecyclerView.Adapter<AdapterAtributos.view
 
     @Override
     public void onBindViewHolder(@NonNull viewHolderAtributos holder, int position) {
-        AtributosProduct a = atributos.get(position);
+        AtributosProductos a = atributos.get(position);
         holder.titulo.setText(a.getName());
         holder.descripcion.setText(a.getValue_name());
     }

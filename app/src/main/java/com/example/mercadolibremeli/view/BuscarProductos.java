@@ -16,19 +16,19 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.mercadolibremeli.R;
-import com.example.mercadolibremeli.interfaces.product.InterfacePresenter;
-import com.example.mercadolibremeli.interfaces.product.InterfaceView;
-import com.example.mercadolibremeli.model.entities.Product;
-import com.example.mercadolibremeli.presenter.products.Productpresenter;
+import com.example.mercadolibremeli.interfaces.productos.InterfacePresenter;
+import com.example.mercadolibremeli.interfaces.productos.InterfaceView;
+import com.example.mercadolibremeli.model.entities.Productos;
+import com.example.mercadolibremeli.presenter.productos.Productospresenter;
 import com.example.mercadolibremeli.view.categorias.Categorias;
 import com.example.mercadolibremeli.view.paises.Paises;
-import com.example.mercadolibremeli.view.product.ProductList;
+import com.example.mercadolibremeli.view.productos.ProductosList;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity implements InterfaceView, SearchView.OnQueryTextListener {
+public class BuscarProductos extends AppCompatActivity implements InterfaceView, SearchView.OnQueryTextListener {
 
-    private InterfacePresenter presenter = new Productpresenter(this, MainActivity.this);
+    private InterfacePresenter presenter = new Productospresenter(this, BuscarProductos.this);
     private androidx.appcompat.widget.SearchView searchView;
     private ImageView menu;
     private RecyclerView recyclerViewSearchResults;
@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity implements InterfaceView, Se
         categorias.setOnClickListener(v -> {
             Log.i("ProductSearch", "Menu categorias");
             removeOptionsMenu();
-            Intent i = new Intent(MainActivity.this, Categorias.class);
+            Intent i = new Intent(BuscarProductos.this, Categorias.class);
             i.putExtra("flag", false);
             startActivity(i);
 
@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity implements InterfaceView, Se
         paises.setOnClickListener(v -> {
             Log.i("ProductSearch", "Menu paises");
             removeOptionsMenu();
-            Intent i = new Intent(MainActivity.this, Paises.class);
+            Intent i = new Intent(BuscarProductos.this, Paises.class);
             startActivity(i);
 
         });
@@ -101,10 +101,10 @@ public class MainActivity extends AppCompatActivity implements InterfaceView, Se
     }
 
     @Override
-    public void showProduct(ArrayList<Product> productos) {
+    public void showProduct(ArrayList<Productos> productos) {
         if(!productos.isEmpty()){
             Intent showProductIntent = new Intent();
-            showProductIntent.setClass(MainActivity.this, ProductList.class);
+            showProductIntent.setClass(BuscarProductos.this, ProductosList.class);
             showProductIntent.putExtra("Productos",productos);
             startActivity(showProductIntent);
         }

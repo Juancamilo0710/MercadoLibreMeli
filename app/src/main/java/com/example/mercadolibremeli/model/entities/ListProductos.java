@@ -3,11 +3,11 @@ package com.example.mercadolibremeli.model.entities;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class ListProduct implements Serializable {
+public class ListProductos implements Serializable {
 
-    ArrayList<Product> results;
+    ArrayList<Productos> results;
 
-    public ArrayList<Product> getResults() {
+    public ArrayList<Productos> getResults() {
         return results;
     }
 

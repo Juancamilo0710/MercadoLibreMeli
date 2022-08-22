@@ -2,8 +2,6 @@ package com.example.mercadolibremeli.view.categorias;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.ProgressBar;
@@ -13,7 +11,7 @@ import com.example.mercadolibremeli.R;
 import com.example.mercadolibremeli.interfaces.categorias.InterfacePresenter;
 import com.example.mercadolibremeli.interfaces.categorias.InterfaceView;
 import com.example.mercadolibremeli.presenter.categorias.CategoriasPresenter;
-import com.example.mercadolibremeli.view.product.ProductCategoias.ProductsCategorias;
+import com.example.mercadolibremeli.view.ProductosCategoias.ProductosCategorias;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -55,7 +53,7 @@ public class Categorias extends AppCompatActivity implements InterfaceView {
         listaCategoria.setAdapter(a);
         listaCategoria.setOnItemClickListener((parent, view, position, id) -> {
             Intent showCategoryIntent = new Intent();
-            showCategoryIntent.setClass(Categorias.this, ProductsCategorias.class);
+            showCategoryIntent.setClass(Categorias.this, ProductosCategorias.class);
             showCategoryIntent.putExtra("categoria", categories.get(position).getId());
             showCategoryIntent.putExtra("pais",id_pais);
             startActivity(showCategoryIntent);

@@ -2,7 +2,7 @@ package com.example.mercadolibremeli.model.entities;
 
 import java.io.Serializable;
 
-public class AtributosProduct implements Serializable {
+public class AtributosProductos implements Serializable {
     private String name;
     private String value_name;
 

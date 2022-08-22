@@ -1,4 +1,4 @@
-package com.example.mercadolibremeli.view.product;
+package com.example.mercadolibremeli.view.productos;
 
 import android.os.Bundle;
 import android.view.View;
@@ -13,16 +13,16 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.mercadolibremeli.R;
 import com.example.mercadolibremeli.adapter.AdapterAtributos;
-import com.example.mercadolibremeli.model.entities.AtributosProduct;
+import com.example.mercadolibremeli.model.entities.AtributosProductos;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
-public class ProductDetail extends AppCompatActivity {
+public class ProductosDetail extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private AdapterAtributos adapterAtributos;
-    private ArrayList<AtributosProduct> atributosArrayList;
+    private ArrayList<AtributosProductos> atributosArrayList;
     Bundle datos;
     TextView titulo,precio;
     ImageView img;
@@ -32,7 +32,7 @@ public class ProductDetail extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_detail);
         datos = getIntent().getExtras();
-        atributosArrayList =(ArrayList<AtributosProduct>) getIntent().getSerializableExtra("Atributos");
+        atributosArrayList =(ArrayList<AtributosProductos>) getIntent().getSerializableExtra("Atributos");
         recyclerView = findViewById(R.id.recycler2);
         titulo = findViewById(R.id.txt2);
         titulo.setText(datos.getString("titulo"));

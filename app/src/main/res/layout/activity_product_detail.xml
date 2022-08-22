@@ -6,7 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".view.product.ProductDetail">
+    tools:context=".view.productos.ProductosDetail">
 
     <RelativeLayout
         android:id="@+id/relative1"
