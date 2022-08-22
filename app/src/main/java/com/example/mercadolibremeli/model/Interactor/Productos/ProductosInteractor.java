@@ -1,6 +1,7 @@
 package com.example.mercadolibremeli.model.Interactor.Productos;
 
 import android.content.Context;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.example.mercadolibremeli.adapter.ApiAdapter;
@@ -50,8 +51,10 @@ public class ProductosInteractor implements InterfaceModel, Callback<ListProduct
             ListProductos listProductos = response.body();
             ArrayList<Productos> listProductosModelImps = listProductos.getResults();
             if(listProductosModelImps != null && !listProductosModelImps.isEmpty()){
+                Log.i("ProductosInteractor", "Retorna lista a la Vista");
                 presenter.showProduct(listProductosModelImps);
             } else {
+                Log.e("ProductosInteractor", "No encontro lista para retornar a la vista");
                 presenter.showFailProductos();
             }
         }
@@ -59,6 +62,6 @@ public class ProductosInteractor implements InterfaceModel, Callback<ListProduct
 
     @Override
     public void onFailure(Call<ListProductos> call, Throwable t) {
-
+        Log.e("ProductosInteractor", "Fallo el consumo");
     }
 }

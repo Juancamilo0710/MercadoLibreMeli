@@ -49,15 +49,16 @@ public class PaisesInteractor implements InterfaceModel, Callback<List<Paises>> 
         if (response.isSuccessful()) {
             List<Paises> listCountry=response.body();
             if (listCountry != null) {
+                Log.i("PaisesInteractor", "Retorna lista a la Vista");
                 presenter.showPaises(listCountry);
             } else {
-                Log.e("onResponseCountry", "Response is null");
+                Log.e("PaisesInteractor", "No encontro lista para retornar a la vista");
             }
         }
     }
 
     @Override
     public void onFailure(Call<List<Paises>> call, Throwable t) {
-
+        Log.e("ProductosInteractor", "Fallo el consumo");
     }
 }

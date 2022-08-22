@@ -43,18 +43,14 @@ public class CategoriasInteractor implements InterfaceModel, Callback<List<Categ
     }
 
     @Override
-    public void showCategorias(List<Categorias> categorias) {
-        presenter.showCategorias(categorias);
-    }
-
-    @Override
     public void onResponse(Call<List<Categorias>> call, Response<List<Categorias>> response) {
         if (response.isSuccessful()) {
             List<Categorias> listCategory = response.body();
             if (listCategory != null) {
-                showCategorias(listCategory);
+                Log.i("CategoriasInteractor", "Retorna lista a la Vista");
+                presenter.showCategorias(listCategory);
             } else {
-                Log.e("CategoryInteractor", "Response is null");
+                Log.e("CategoriasInteractor", "No encontro lista para retornar a la vista");
             }
         }
 
@@ -62,6 +58,6 @@ public class CategoriasInteractor implements InterfaceModel, Callback<List<Categ
 
     @Override
     public void onFailure(Call<List<Categorias>> call, Throwable t) {
-
+        Log.e("CategoriasInteractor", "Fallo el consumo");
     }
 }

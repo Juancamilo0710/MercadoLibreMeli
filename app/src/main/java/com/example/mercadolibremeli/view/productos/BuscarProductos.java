@@ -112,6 +112,7 @@ public class BuscarProductos extends AppCompatActivity implements InterfaceView,
 
     @Override
     public void getData(String q) {
+        Log.i("BuscarProductos", "Inició la Operación");
         disguiseImagen();
         showProgresBar();
         disguiseUtilsNetwork();
@@ -123,6 +124,7 @@ public class BuscarProductos extends AppCompatActivity implements InterfaceView,
     public void showProduct(ArrayList<Productos> productos) {
         progressBarr.setVisibility(View.GONE);
         if (!productos.isEmpty()) {
+            Log.i("BuscarProductos", "Se hace intent para mostrar listado de productos");
             Intent showProductIntent = new Intent();
             showProductIntent.setClass(BuscarProductos.this, ProductosList.class);
             showProductIntent.putExtra("Productos", productos);
@@ -185,7 +187,7 @@ public class BuscarProductos extends AppCompatActivity implements InterfaceView,
 
         TextView categorias = findViewById(R.id.categorias);
         categorias.setOnClickListener(v -> {
-            Log.i("ProductSearch", "Menu categorias");
+            Log.i("BuscarProductos", "Menu categorias");
             removeOptionsMenu();
             Intent i = new Intent(BuscarProductos.this, Categorias.class);
             i.putExtra("flag", false);
@@ -194,7 +196,7 @@ public class BuscarProductos extends AppCompatActivity implements InterfaceView,
         });
         TextView paises = findViewById(R.id.paises);
         paises.setOnClickListener(v -> {
-            Log.i("ProductSearch", "Menu paises");
+            Log.i("BuscarProductos", "Menu paises");
             removeOptionsMenu();
             Intent i = new Intent(BuscarProductos.this, Paises.class);
             startActivity(i);

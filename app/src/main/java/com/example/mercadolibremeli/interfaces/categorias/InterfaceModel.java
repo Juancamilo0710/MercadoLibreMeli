@@ -10,6 +10,4 @@ public interface InterfaceModel {
 
     void getCategoriasFromApi(String id_pais);
 
-    void showCategorias(List<Categorias> categories);
-
 }

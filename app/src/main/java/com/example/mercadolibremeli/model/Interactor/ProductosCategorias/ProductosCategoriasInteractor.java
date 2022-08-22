@@ -49,14 +49,15 @@ public class ProductosCategoriasInteractor implements InterfaceModel, Callback<L
         ListProductos listadeproductos = response.body();
         ArrayList<Productos> productos = listadeproductos.getResults();
         if(productos.size()>0) {
+            Log.i("ProductosCategorias", "Retorna lista a la Vista");
             presenter.showProductCategorias(productos);
-        }else {
-            Log.e("onResponsePC", "Response is null");
+        } else {
+            Log.e("ProductosCategorias", "No encontro lista para retornar a la vista");
         }
     }
 
     @Override
     public void onFailure(Call<ListProductos> call, Throwable t) {
-
+        Log.e("ProductosCategorias", "Fallo el consumo");
     }
 }

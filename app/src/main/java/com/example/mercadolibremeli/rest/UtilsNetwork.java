@@ -3,6 +3,7 @@ package com.example.mercadolibremeli.rest;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.util.Log;
 
 public class UtilsNetwork {
 
@@ -11,10 +12,12 @@ public class UtilsNetwork {
 
         if(connectivityManager != null){
             NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
-            if(networkInfo != null)
+            if(networkInfo != null){
+                Log.i("UtilsNetwork", "Hay Conexión a Internet");
                 return networkInfo.isConnected();
+            }
         }
-
+        Log.e("UtilsNetwork", "No hay Conexión a Internet");
         return false;
     }
 }

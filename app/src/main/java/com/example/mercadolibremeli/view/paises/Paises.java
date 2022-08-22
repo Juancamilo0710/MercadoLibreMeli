@@ -46,7 +46,7 @@ public class Paises extends AppCompatActivity implements InterfaceView {
 
     @Override
     public void getPaises() {
-        Log.i("Paises", "Solicitar paises");
+        Log.i("Paises", "Inició la Operación");
         showprogressBar();
         disguiseUtilsNetwork();
         presenter.getPaises();
@@ -59,7 +59,7 @@ public class Paises extends AppCompatActivity implements InterfaceView {
 
     @Override
     public void showPaises(List<com.example.mercadolibremeli.model.entities.Paises> paises) {
-        Log.i("Paises", "Solicitud   Ok: "+paises.size());
+        Log.i("Paises", "Se hace intent para mostrar listado de paises");
         ArrayList<String> list=new ArrayList<>();
         for (com.example.mercadolibremeli.model.entities.Paises P:paises) {
             list.add(P.getName());

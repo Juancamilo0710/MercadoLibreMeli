@@ -3,6 +3,7 @@ package com.example.mercadolibremeli.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,6 +36,7 @@ public class AdapterProductos extends RecyclerView.Adapter<AdapterProductos.view
     @NonNull
     @Override
     public viewHolderProducto onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        Log.i("AdapterProductos", "Se infla CardView");
         View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.product_item_list,null,false);
         return new viewHolderProducto(view);
     }
@@ -43,7 +45,7 @@ public class AdapterProductos extends RecyclerView.Adapter<AdapterProductos.view
     public void onBindViewHolder(@NonNull viewHolderProducto holder, int position) {
         Productos p = productosArrayList.get(position);
         holder.txtnombre.setText(p.getTitle());
-        holder.txtprecio.setText(String.valueOf(new DecimalFormat("###,###,###").format(p.getPrice())));
+        holder.txtprecio.setText(new DecimalFormat("###,###,###").format(p.getPrice()));
         holder.txtcantidad.setText(String.valueOf(p.getAvailable_quantity()));
         Glide.with(context).load(p.getThumbnail().replaceFirst("http","https"))
                 .centerCrop()
@@ -70,10 +72,10 @@ public class AdapterProductos extends RecyclerView.Adapter<AdapterProductos.view
 
         public viewHolderProducto(@NonNull View itemView) {
             super(itemView);
+            img = itemView.findViewById(R.id.img);
             txtnombre = itemView.findViewById(R.id.txtnombre);
             txtprecio = itemView.findViewById(R.id.txtprecio);
             txtcantidad = itemView.findViewById(R.id.txtcantidad);
-            img = itemView.findViewById(R.id.img);
         }
     }
 }

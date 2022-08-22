@@ -50,13 +50,14 @@ public class Categorias extends AppCompatActivity implements InterfaceView {
 
     @Override
     public void getCategorias(String idPais) {
+        Log.i("Categorias", "Inició la Operación");
         showProgresBar();
         presenter.getCategorias(idPais);
     }
 
     @Override
     public void showCategorias(List<com.example.mercadolibremeli.model.entities.Categorias> categories) {
-        Log.i("Categorias", "Consulta  Ok: " + categories.size());
+        Log.i("Categorias", "Se hace intent para mostrar listado de categorias");
         ArrayList<String> list = new ArrayList<>();
         for (com.example.mercadolibremeli.model.entities.Categorias C : categories) {
             list.add(C.getName());

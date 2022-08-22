@@ -2,6 +2,7 @@ package com.example.mercadolibremeli.adapter;
 
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,6 +29,7 @@ public class AdapterAtributos extends RecyclerView.Adapter<AdapterAtributos.view
     @NonNull
     @Override
     public viewHolderAtributos onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        Log.i("AdapterAtributos", "Se infla CardView");
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.atributos_item_list, null, false);
         return new viewHolderAtributos(view);
     }

@@ -22,7 +22,7 @@ public class Splash extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
             new Handler().postDelayed(() -> {
-                Log.i("SplashScreen", "Inicio app");
+                Log.i("Splash", "Inicio app");
                 Intent i = new Intent(Splash.this, BuscarProductos.class);
                 startActivity(i);
                 finish();

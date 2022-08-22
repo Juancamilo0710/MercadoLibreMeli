@@ -60,7 +60,7 @@ public class ProductosCategorias extends AppCompatActivity implements InterfaceV
 
     @Override
     public void getProductCategorias(String id_pais, String id_categoria) {
-        Log.i("ProductsCategory", "Productos por categoria " + "id_pais: " + id_pais + "  id_categoria  " + id_categoria);
+        Log.i("ProductosCategorias", "Productos por categoria " + "id_pais: " + id_pais + "  id_categoria  " + id_categoria);
         showProgresBar();
         disguiseUtilsNetwork();
         mPresenter.getProductCategorias(id_pais, id_categoria);
@@ -81,7 +81,7 @@ public class ProductosCategorias extends AppCompatActivity implements InterfaceV
 
     @Override
     public void showProductCategorias(ArrayList<Productos> productos) {
-        Log.i("ProductsCategory", "Productos por categoria " + "id_pais: " + id_pais + "  id_categoria  " + id_categoria);
+        Log.i("ProductosCategorias", "Productos por categoria " + "id_pais: " + id_pais + "  id_categoria  " + id_categoria);
         adapterProductos = new AdapterProductos(productos, this);
         recyclerView.setAdapter(adapterProductos);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
