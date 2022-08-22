@@ -8,6 +8,8 @@ import java.util.ArrayList;
 
 public interface InterfaceView {
 
+    void initAllPermissions();
+
     void initV();
 
     void getData(String q);

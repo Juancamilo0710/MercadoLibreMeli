@@ -1,7 +1,9 @@
 package com.example.mercadolibremeli.view;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -16,6 +18,8 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import com.example.mercadolibremeli.R;
 import com.example.mercadolibremeli.interfaces.productos.InterfacePresenter;
@@ -53,6 +57,42 @@ public class BuscarProductos extends AppCompatActivity implements InterfaceView,
         showImagen();
         disguiseFailProductos();
         disguiseUtilsNetwork();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        initAllPermissions();
+
+    }
+
+    @Override
+    public void initAllPermissions() {
+        ArrayList<String> permissionGrantedList = new ArrayList<>();
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            permissionGrantedList.add(Manifest.permission.READ_EXTERNAL_STORAGE);
+        }
+
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            permissionGrantedList.add(Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        }
+
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            permissionGrantedList.add(Manifest.permission.ACCESS_COARSE_LOCATION);
+        }
+
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_SETTINGS) != PackageManager.PERMISSION_GRANTED) {
+            permissionGrantedList.add(Manifest.permission.WRITE_SETTINGS);
+        }
+
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+            permissionGrantedList.add(Manifest.permission.CAMERA);
+        }
+
+        if (!permissionGrantedList.isEmpty()) {
+            String[] permissionGrantedStrings = permissionGrantedList.toArray(new String[permissionGrantedList.size()]);
+            ActivityCompat.requestPermissions(this, permissionGrantedStrings, 10000);
+        }
     }
 
     @Override

@@ -8,14 +8,14 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mercadolibremeli.R;
-import com.example.mercadolibremeli.adapter.ProductosAdapter;
+import com.example.mercadolibremeli.adapter.AdapterProductos;
 import com.example.mercadolibremeli.model.entities.Productos;
 
 import java.util.ArrayList;
 
 public class ProductosList extends AppCompatActivity {
     private RecyclerView recyclerView;
-    private ProductosAdapter adapterProducto;
+    private AdapterProductos adapterProducto;
     private ArrayList<Productos> productos;
 
     @Override
@@ -24,7 +24,7 @@ public class ProductosList extends AppCompatActivity {
         setContentView(R.layout.activity_product_list);
         recyclerView = findViewById(R.id.recycler1);
         productos=(ArrayList<Productos>) getIntent().getSerializableExtra("Productos");
-        adapterProducto = new ProductosAdapter(productos, this);
+        adapterProducto = new AdapterProductos(productos, this);
         recyclerView.setAdapter(adapterProducto);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setVisibility(View.VISIBLE);
