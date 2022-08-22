@@ -1,4 +1,4 @@
-package com.example.mercadolibremeli.view;
+package com.example.mercadolibremeli.view.splash;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,6 +8,7 @@ import android.os.Handler;
 import android.util.Log;
 
 import com.example.mercadolibremeli.R;
+import com.example.mercadolibremeli.view.productos.BuscarProductos;
 
 public class Splash extends AppCompatActivity {
 

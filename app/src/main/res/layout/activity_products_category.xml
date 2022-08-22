@@ -4,7 +4,7 @@
     android:id="@+id/principal"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.BuscarProductos">
+    tools:context=".view.productos.BuscarProductos">
 
     <RelativeLayout
         android:id="@+id/relative1"

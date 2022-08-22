@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/gris_claro"
     android:id="@+id/principal"
-    tools:context=".view.BuscarProductos">
+    tools:context=".view.productos.BuscarProductos">
 
     <LinearLayout
         android:id="@+id/relative1"
@@ -52,22 +52,23 @@
         <ImageView
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_marginLeft="80dp"
+            android:layout_gravity="center"
             android:src="@drawable/ic_baseline_network_check_24"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:textSize="@dimen/error_network"
             android:text="@string/error_network"
-            android:layout_margin="10dp"/>
+            android:layout_gravity="center"/>
         <TextView
             android:id="@+id/reintento"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="reload"
             android:textColor="@color/azul"
+            android:textSize="30dp"
             android:text="@string/error_network_reintent"
-            android:layout_marginLeft="100dp" />
+            android:layout_gravity="center"/>
     </LinearLayout>
 
     <LinearLayout
@@ -81,12 +82,13 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:textSize="@dimen/error_sin_result"
-            android:text="@string/error_sin_result" />
+            android:text="@string/error_sin_result"
+            android:layout_gravity="center"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/error_sin_result_palabra"
-            android:layout_marginLeft="10dp" />
+            android:layout_gravity="center"/>
     </LinearLayout>
 
     <ImageView

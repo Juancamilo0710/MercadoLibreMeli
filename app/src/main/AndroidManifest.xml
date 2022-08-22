@@ -19,7 +19,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MercadoLibreMeli">
         <activity
-            android:name=".view.Splash"
+            android:name=".view.splash.Splash"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,7 +27,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.BuscarProductos"/>
+        <activity android:name=".view.productos.BuscarProductos"/>
         <activity android:name=".view.paises.Paises" />
         <activity android:name=".view.categorias.Categorias" />
         <activity android:name=".view.productos.ProductosList" />

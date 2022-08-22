@@ -1,4 +1,4 @@
-package com.example.mercadolibremeli.view;
+package com.example.mercadolibremeli.view.productos;
 
 import android.Manifest;
 import android.content.Context;
@@ -28,7 +28,6 @@ import com.example.mercadolibremeli.model.entities.Productos;
 import com.example.mercadolibremeli.presenter.productos.Productospresenter;
 import com.example.mercadolibremeli.view.categorias.Categorias;
 import com.example.mercadolibremeli.view.paises.Paises;
-import com.example.mercadolibremeli.view.productos.ProductosList;
 
 import java.util.ArrayList;
 
@@ -40,13 +39,14 @@ public class BuscarProductos extends AppCompatActivity implements InterfaceView,
     private LinearLayout notnetwork;
     private LinearLayout failProductos;
     private androidx.appcompat.widget.SearchView searchView;
-    private InterfacePresenter presenter = new Productospresenter(this, BuscarProductos.this);
+    private final InterfacePresenter presenter = new Productospresenter(this, BuscarProductos.this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initV();
+        initAllPermissions();
         searchView.setOnQueryTextListener(this);
         menu.setOnClickListener(v -> OptionsMenu());
     }
@@ -57,13 +57,6 @@ public class BuscarProductos extends AppCompatActivity implements InterfaceView,
         showImagen();
         disguiseFailProductos();
         disguiseUtilsNetwork();
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        initAllPermissions();
-
     }
 
     @Override
@@ -90,7 +83,7 @@ public class BuscarProductos extends AppCompatActivity implements InterfaceView,
         }
 
         if (!permissionGrantedList.isEmpty()) {
-            String[] permissionGrantedStrings = permissionGrantedList.toArray(new String[permissionGrantedList.size()]);
+            String[] permissionGrantedStrings = permissionGrantedList.toArray(new String[0]);
             ActivityCompat.requestPermissions(this, permissionGrantedStrings, 10000);
         }
     }
@@ -213,8 +206,8 @@ public class BuscarProductos extends AppCompatActivity implements InterfaceView,
     }
 
     private void removeOptionsMenu() {
-        ViewGroup menu = findViewById(R.id.principal);
+        ViewGroup menus = findViewById(R.id.principal);
         RelativeLayout options = findViewById(R.id.menuOptions);
-        menu.removeView(options);
+        menus.removeView(options);
     }
 }
