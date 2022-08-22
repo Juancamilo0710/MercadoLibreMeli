@@ -37,6 +37,9 @@ public class ProductosInteractor implements InterfaceModel, Callback<ListProduct
     public void getData(String q) {
         if (UtilsNetwork.isOnline(context)) {
             getproductFromApi(q);
+        } else {
+            presenter.showUtilsNetwork();
+            Toast.makeText(context, "Verifique su conexión a internet", Toast.LENGTH_SHORT).show();
         }
 
     }
@@ -46,9 +49,10 @@ public class ProductosInteractor implements InterfaceModel, Callback<ListProduct
         if (response.isSuccessful()) {
             ListProductos listProductos = response.body();
             ArrayList<Productos> listProductosModelImps = listProductos.getResults();
-            if(listProductosModelImps != null){
+            if(listProductosModelImps != null && !listProductosModelImps.isEmpty()){
                 presenter.showProduct(listProductosModelImps);
-                Toast.makeText(context, "Consumio API...", Toast.LENGTH_SHORT).show();
+            } else {
+                presenter.showFailProductos();
             }
         }
     }

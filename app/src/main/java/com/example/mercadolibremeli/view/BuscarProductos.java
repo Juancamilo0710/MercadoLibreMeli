@@ -9,9 +9,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -31,7 +34,11 @@ public class BuscarProductos extends AppCompatActivity implements InterfaceView,
     private InterfacePresenter presenter = new Productospresenter(this, BuscarProductos.this);
     private androidx.appcompat.widget.SearchView searchView;
     private ImageView menu;
-    private RecyclerView recyclerViewSearchResults;
+    private ProgressBar progressBarr;
+    private LinearLayout notnetwork;
+    private ImageView imagen;
+    private LinearLayout failProductos;
+    private TextView reintento;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +46,14 @@ public class BuscarProductos extends AppCompatActivity implements InterfaceView,
         setContentView(R.layout.activity_main);
         initV();
         menu.setOnClickListener(v -> OptionsMenu());
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        showImagen();
+        disguiseFailProductos();
+        disguiseUtilsNetwork();
     }
 
     private void OptionsMenu() {
@@ -78,7 +93,13 @@ public class BuscarProductos extends AppCompatActivity implements InterfaceView,
 
     @Override
     public void initV() {
-        menu=findViewById(R.id.menu);
+
+        failProductos = findViewById(R.id.failProductos);
+        imagen = findViewById(R.id.imagen);
+        reintento = findViewById(R.id.reintento);
+        notnetwork = findViewById(R.id.notnetwork);
+        progressBarr = findViewById(R.id.progressbar_loading);
+        menu = findViewById(R.id.menu);
         searchView = findViewById(R.id.searchview);
         searchView.setOnQueryTextListener(this);
     }
@@ -97,11 +118,16 @@ public class BuscarProductos extends AppCompatActivity implements InterfaceView,
 
     @Override
     public void getData(String q) {
+        disguiseImagen();
+        showProgresBar();
+        disguiseUtilsNetwork();
+        disguiseFailProductos();
         presenter.getData(q);
     }
 
     @Override
     public void showProduct(ArrayList<Productos> productos) {
+        progressBarr.setVisibility(View.GONE);
         if(!productos.isEmpty()){
             Intent showProductIntent = new Intent();
             showProductIntent.setClass(BuscarProductos.this, ProductosList.class);
@@ -109,5 +135,50 @@ public class BuscarProductos extends AppCompatActivity implements InterfaceView,
             startActivity(showProductIntent);
         }
 
+    }
+
+    @Override
+    public void showUtilsNetwork() {
+        notnetwork.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void disguiseUtilsNetwork() {
+        notnetwork.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void reload(View view) {
+        getData(searchView.getQuery().toString());
+    }
+
+    @Override
+    public void showImagen() {
+        imagen.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void disguiseImagen() {
+        imagen.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void showProgresBar() {
+        progressBarr.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void disguiseProgresBar() {
+        progressBarr.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void showFailProductos() {
+        failProductos.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void disguiseFailProductos() {
+        failProductos.setVisibility(View.GONE);
     }
 }

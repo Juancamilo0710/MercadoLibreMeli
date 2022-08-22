@@ -28,5 +28,18 @@ public class Productospresenter implements InterfacePresenter {
     @Override
     public void showProduct(ArrayList<Productos> productos) {
         view.showProduct(productos);
+        view.disguiseProgresBar();
+    }
+
+    @Override
+    public void showFailProductos() {
+        view.showFailProductos();
+        view.disguiseProgresBar();
+    }
+
+    @Override
+    public void showUtilsNetwork() {
+        view.showUtilsNetwork();
+        view.disguiseProgresBar();
     }
 }

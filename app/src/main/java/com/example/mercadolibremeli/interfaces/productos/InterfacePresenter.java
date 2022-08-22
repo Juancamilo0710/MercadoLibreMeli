@@ -9,4 +9,8 @@ public interface InterfacePresenter {
     void getData(String q);
 
     void showProduct(ArrayList<Productos> productos);
+
+    void showFailProductos();
+
+    void showUtilsNetwork();
 }
