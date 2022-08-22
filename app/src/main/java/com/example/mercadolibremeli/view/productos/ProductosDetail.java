@@ -30,7 +30,7 @@ public class ProductosDetail extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_product_detail);
+        setContentView(R.layout.activity_productos_detail);
         datos = getIntent().getExtras();
         atributosArrayList =(ArrayList<AtributosProductos>) getIntent().getSerializableExtra("Atributos");
         recyclerView = findViewById(R.id.recycler2);

@@ -38,7 +38,7 @@ public class ProductosCategorias extends AppCompatActivity implements InterfaceV
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_products_category);
+        setContentView(R.layout.activity_productos_category);
         initV();
         getProductCategorias(id_pais, id_categoria);
     }

@@ -64,6 +64,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="90dp"
             android:onClick="reload"
+            android:textSize="30dp"
             android:text="@string/error_network_reintent"
             android:textColor="@color/azul" />
 

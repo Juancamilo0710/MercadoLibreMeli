@@ -44,7 +44,7 @@ public class BuscarProductos extends AppCompatActivity implements InterfaceView,
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_buscar_productos);
         initV();
         initAllPermissions();
         searchView.setOnQueryTextListener(this);
