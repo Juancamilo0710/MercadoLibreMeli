@@ -15,23 +15,30 @@ public class ProductosCategoriasPresenter implements InterfacePresenter {
 
     private InterfaceModel productInterator;
     private InterfaceView view;
+    private Context context;
 
 
     public ProductosCategoriasPresenter(InterfaceView view, Context context) {
-        this.productInterator = new ProductosCategoriasInteractor(this);
+        this.productInterator = new ProductosCategoriasInteractor(this, context);
         this.view = view;
+        this.context = context;
     }
 
     @Override
     public void getProductCategorias(String id_pais, String id_categoria) {
         productInterator.getProductCategorias( id_pais, id_categoria);
-        view.showProgresBar();
     }
 
     @Override
     public void showProductCategorias(ArrayList<Productos> productos) {
-        view.hideProgresBar();
+        view.disguiseProgresBar();
         view.showProductCategorias(productos);
+    }
+
+    @Override
+    public void showUtilsNetwork() {
+        view.disguiseProgresBar();
+        view.showUtilsNetwork();
     }
 
 

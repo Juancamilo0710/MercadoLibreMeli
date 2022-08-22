@@ -25,11 +25,17 @@ public class CategoriasPresenter implements InterfacePresenter {
     @Override
     public void getCategorias(String id_pais) {
         interfaceModel.getCategorias(id_pais);
-        view.showProgresBar();
     }
 
     @Override
     public void showCategorias(List<Categorias> categorias) {
         view.showCategorias(categorias);
+        view.disguiseprogressBar();
+    }
+
+    @Override
+    public void showUtilsNetwork() {
+        view.showUtilsNetwork();
+        view.disguiseprogressBar();
     }
 }

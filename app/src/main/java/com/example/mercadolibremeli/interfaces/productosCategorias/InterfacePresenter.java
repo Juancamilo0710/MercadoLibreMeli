@@ -10,4 +10,6 @@ public interface InterfacePresenter {
 
     void showProductCategorias(ArrayList<Productos> productos);
 
+    void showUtilsNetwork();
+
 }

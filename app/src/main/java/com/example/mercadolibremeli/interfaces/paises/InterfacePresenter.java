@@ -10,4 +10,6 @@ public interface InterfacePresenter {
 
     void showPaises(List<Paises> countries);
 
+    void showUtilsNetwork();
+
 }

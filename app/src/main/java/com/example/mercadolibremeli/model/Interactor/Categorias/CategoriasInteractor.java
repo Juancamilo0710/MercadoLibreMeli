@@ -2,6 +2,7 @@ package com.example.mercadolibremeli.model.Interactor.Categorias;
 
 import android.content.Context;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.example.mercadolibremeli.adapter.ApiAdapter;
 import com.example.mercadolibremeli.interfaces.categorias.InterfaceModel;
@@ -17,21 +18,22 @@ import retrofit2.Response;
 
 public class CategoriasInteractor implements InterfaceModel, Callback<List<Categorias>> {
 
-    private InterfacePresenter presenter;
     private final Context context;
+    private InterfacePresenter presenter;
 
     public CategoriasInteractor(InterfacePresenter presenter, Context context) {
         this.presenter = presenter;
         this.context = context;
     }
 
-
     @Override
     public void getCategorias(String id_pais) {
         if (UtilsNetwork.isOnline(context)) {
             getCategoriasFromApi(id_pais);
+        } else {
+            presenter.showUtilsNetwork();
+            Toast.makeText(context, "Verifique su conexión a internet", Toast.LENGTH_SHORT).show();
         }
-
     }
 
     @Override
@@ -48,10 +50,9 @@ public class CategoriasInteractor implements InterfaceModel, Callback<List<Categ
     @Override
     public void onResponse(Call<List<Categorias>> call, Response<List<Categorias>> response) {
         if (response.isSuccessful()) {
-            List<Categorias> listCategory=response.body();
+            List<Categorias> listCategory = response.body();
             if (listCategory != null) {
                 showCategorias(listCategory);
-
             } else {
                 Log.e("CategoryInteractor", "Response is null");
             }

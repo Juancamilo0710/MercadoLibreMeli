@@ -32,6 +32,9 @@ public class PaisesInteractor implements InterfaceModel, Callback<List<Paises>> 
     public void getPaises() {
         if (UtilsNetwork.isOnline(context)) {
             getPaisesFromApi();
+        } else {
+            presenter.showUtilsNetwork();
+            Toast.makeText(context, "Verifique su conexión a internet", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -47,7 +50,6 @@ public class PaisesInteractor implements InterfaceModel, Callback<List<Paises>> 
             List<Paises> listCountry=response.body();
             if (listCountry != null) {
                 presenter.showPaises(listCountry);
-                Toast.makeText(context, "Consumio API Paises...", Toast.LENGTH_SHORT).show();
             } else {
                 Log.e("onResponseCountry", "Response is null");
             }

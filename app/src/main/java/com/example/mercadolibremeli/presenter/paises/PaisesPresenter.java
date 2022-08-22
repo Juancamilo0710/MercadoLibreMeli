@@ -23,15 +23,19 @@ public class PaisesPresenter implements InterfacePresenter {
     @Override
     public void showPaises(List<Paises> paises) {
         view.showPaises(paises);
-        view.hideProgresBar();
+        view.disguiseprogressBar();
 
+    }
+
+    @Override
+    public void showUtilsNetwork() {
+        view.showUtilsNetwork();
+        view.disguiseprogressBar();
     }
 
     @Override
     public void getPaises() {
         interfaceModel.getPaises();
-        view.showProgresBar();
-
     }
 
 }

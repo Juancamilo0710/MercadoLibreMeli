@@ -10,4 +10,6 @@ public interface InterfacePresenter {
 
     void showCategorias(List<Categorias> categories);
 
+    void showUtilsNetwork();
+
 }

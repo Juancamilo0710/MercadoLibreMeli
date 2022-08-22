@@ -3,7 +3,9 @@ package com.example.mercadolibremeli.view.paises;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 
@@ -20,35 +22,39 @@ import java.util.List;
 
 public class Paises extends AppCompatActivity implements InterfaceView {
 
-    ListView listaPaises;
+    private ListView listaPaises;
+    private ProgressBar progressBar;
+    private LinearLayout notnetwork;
     private InterfacePresenter presenter;
-    private ProgressBar progressbarLoading;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_paises);
-        listaPaises=findViewById(R.id.listaPaises);
-        presenter = new PaisesPresenter(this, getApplicationContext());
+        initV();
         getPaises();
-
     }
 
+
+    @Override
+    public void initV() {
+        notnetwork = findViewById(R.id.notnetwork);
+        progressBar = findViewById(R.id.progressBar);
+        listaPaises = findViewById(R.id.listaPaises);
+        presenter = new PaisesPresenter(this, getApplicationContext());
+    }
 
     @Override
     public void getPaises() {
         Log.i("Paises", "Solicitar paises");
+        showprogressBar();
+        disguiseUtilsNetwork();
         presenter.getPaises();
     }
 
     @Override
-    public void showProgresBar() {
-
-    }
-
-    @Override
-    public void hideProgresBar() {
-
+    public void reload(View view) {
+        getPaises();
     }
 
     @Override
@@ -68,5 +74,25 @@ public class Paises extends AppCompatActivity implements InterfaceView {
             startActivity(showCategoriasIntent);
         });
 
+    }
+
+    @Override
+    public void showprogressBar() {
+        progressBar.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void disguiseprogressBar() {
+        progressBar.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void showUtilsNetwork() {
+        notnetwork.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void disguiseUtilsNetwork() {
+        notnetwork.setVisibility(View.GONE);
     }
 }
